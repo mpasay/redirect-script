@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redirect</title>
+</head>
+<body>
+    <script>
+        // Replace this URL with your Zapier webhook URL
+        const zapierWebhookUrl = 'https://hooks.zapier.com/hooks/catch/your_webhook_id/?record_id=record_id_placeholder';
+
+        // Replace this URL with the URL you want to redirect to
+        const redirectUrl = 'https://www.phyllissong.com/INVITED';
+
+        // Function to trigger Zapier webhook and then redirect
+        fetch(zapierWebhookUrl)
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = redirectUrl;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.href = redirectUrl; // Redirect even if there's an error
+            });
+    </script>
+</body>
+</html>
