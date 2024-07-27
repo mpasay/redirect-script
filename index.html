@@ -8,23 +8,38 @@
         // Extract record_id from the query parameter
         const urlParams = new URLSearchParams(window.location.search);
         const recordId = urlParams.get('record_id');
-        
-        // Replace this URL with your Zapier webhook URL
-        const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/your_webhook_id/?record_id=${recordId}`;
 
-        // Replace this URL with the URL you want to redirect to
-        const redirectUrl = 'https://www.phyllissong.com/INVITED';
+        // Ensure the recordId is present
+        if (recordId) {
+            // Replace this URL with your Zapier webhook URL
+            const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/10710020/2uh8aq4/?record_id=${recordId}`;
 
-        // Function to trigger Zapier webhook and then redirect
-        fetch(zapierWebhookUrl)
-            .then(response => response.json())
-            .then(data => {
-                window.location.href = redirectUrl;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                window.location.href = redirectUrl; // Redirect even if there's an error
-            });
+            // Logging for debugging
+            console.log(`Zapier Webhook URL: ${zapierWebhookUrl}`);
+
+            // Replace this URL with the URL you want to redirect to
+            const redirectUrl = 'https://www.phyllissong.com/INVITED';
+
+            // Function to trigger Zapier webhook and then redirect
+            fetch(zapierWebhookUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Zapier response:', data);
+                    window.location.href = redirectUrl;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    window.location.href = redirectUrl; // Redirect even if there's an error
+                });
+        } else {
+            console.error('record_id is missing');
+        }
     </script>
 </body>
 </html>
+
