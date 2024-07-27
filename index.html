@@ -5,8 +5,12 @@
 </head>
 <body>
     <script>
+        // Extract record_id from the query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const recordId = urlParams.get('record_id');
+        
         // Replace this URL with your Zapier webhook URL
-        const zapierWebhookUrl = 'https://hooks.zapier.com/hooks/catch/your_webhook_id/?record_id=record_id_placeholder';
+        const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/your_webhook_id/?record_id=${recordId}`;
 
         // Replace this URL with the URL you want to redirect to
         const redirectUrl = 'https://www.phyllissong.com/INVITED';
