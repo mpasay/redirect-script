@@ -11,14 +11,14 @@
 
         // Ensure the recordId is present
         if (recordId) {
-            // Replace this URL with your Zapier webhook URL
-            const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/10710020/2uh8aq4/?record_id=${recordId}`;
+            // Replace this URL with your new Zapier webhook URL
+            const zapierWebhookUrl = `https://hooks.zapier.com/hooks/catch/10710020/2uf96pv/?record_id=${recordId}`;
 
             // Logging for debugging
             console.log(`Zapier Webhook URL: ${zapierWebhookUrl}`);
 
             // Replace this URL with the URL you want to redirect to
-            const redirectUrl = 'https://www.phyllissong.com/INVITE';
+            const redirectUrl = 'https://www.phyllissong.com/withdrawapplication';
 
             // Function to trigger Zapier webhook and then redirect
             fetch(zapierWebhookUrl)
